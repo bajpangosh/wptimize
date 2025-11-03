@@ -1,11 +1,11 @@
-# Bulk images
-Wordpress plugin https://wordpress.org/plugins/bulk-image-resizer/
+# WPtimize
+WordPress plugin for image optimization by KloudBoy
 
 Resize, optimize, convert to webp and rename images on your website. 
 
 # Description 
 
-Bulk images allows you to optimize images uploaded to wordpress without creating unnecessary copies of the upload folder!
+WPtimize allows you to optimize images uploaded to WordPress without creating unnecessary copies of the upload folder!
 
 - You can resize all images with just one click.
 - You can convert images to webp.
@@ -20,15 +20,15 @@ Bulk images allows you to optimize images uploaded to wordpress without creating
 - You can restore and go back to the original images.
 - You can remove the original images if you have space problems.
 
- The GitHub repo can be found at [https://github.com/giuliopanda/op-bulk-image-resizer](https://github.com/giuliopanda/op-bulk-image-resizer). Please use the Support tab for potential bugs, issues, or enhancement ideas.
+ For support, please contact us at support@kloudboy.com or visit [https://kloudboy.com/support](https://kloudboy.com/support).
 
 # Installation
 
-After installing the plugin, **go to Tools** > **Bulk images** to set up the plugin. You can resize single images or groups from media library (mode list).
+After installing the plugin, **go to Tools** > **WPtimize** to set up the plugin. You can resize single images or groups from media library (mode list).
 
 # Frequently Asked Questions
 
-## Why use Bulk images? 
+## Why use WPtimize? 
 I've found that most plugins that optimize images duplicate images in new folders creating a superstructure that complicates the entire site. This plugin optimizes the images you have uploaded to your site and overwrites them. The thumbs are also regenerated. If the image is converted to webp or if the name of the image is changed, the system tries to correct the images already published in the articles and pages. However, it is possible to restore at any time. If you have space problems you can always delete the original image that is used for the restore
 
 ## Can I resize images when uploaded? 
@@ -78,9 +78,9 @@ add_filter( 'op_bir_resize_image_bulk', 'fn_bir_resize_image', 10, 2);
 op_bir_resize_image_bulk_suffix returns the suffix to be added to the image 
 bulk-image-resizer-after-setup-form adds html to the end of the setting form
 
-= What about Bulk image resizer =
-When you upload an image to wordpress, thumbs are created for the template, but the uploaded image is saved and sometimes used.
-Bulk image resizer resizes uploaded images to optimize site speed and server space.
+## What about WPtimize
+When you upload an image to WordPress, thumbs are created for the template, but the uploaded image is saved and sometimes used.
+WPtimize resizes uploaded images to optimize site speed and server space.
 
 **Be careful**
 If you remove the original images, The images are overwritten at the size you set, so it's important to make a backup first.
@@ -89,7 +89,14 @@ They assume no responsibility for any malfunctions or loss of information result
 
 # Changelog
 
-= 2.0.0 2023-09-08 =
+= 2.0.1 - 2024-11-03 =
+* Updated: WordPress compatibility to 6.4+
+* Updated: PHP requirement to 7.4+
+* Fixed: Version consistency across plugin files
+* Improved: Modern WordPress standards compliance
+* Tested: Block editor compatibility
+
+= 2.0.0 - 2023-09-08 =
 * Feat. rewritten the whole plugin!
 * Added ability to convert to webp.
 * Added ability to rename images.
@@ -148,6 +155,6 @@ They assume no responsibility for any malfunctions or loss of information result
 * Added: language Translate
 
 
-== Credits ==
-The Bulk image resize was started in 2021 by [Giulio Pandolfelli](giuliopanda@gmail.com) 
-for graphs I use https://www.chartjs.org/
+# Credits
+WPtimize is developed and maintained by KloudBoy (support@kloudboy.com)
+For graphs we use https://www.chartjs.org/

@@ -1,8 +1,13 @@
 <?php
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 /**
 * La classe facade per le azioni eseguibili dal plugin
 */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 class Bir_facade extends Bir_extends_functions
 {

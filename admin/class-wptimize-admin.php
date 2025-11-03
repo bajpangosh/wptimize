@@ -1,7 +1,12 @@
 <?php
- namespace bulk_image_resizer;
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
 
-class Bulk_image_resizer_admin 
+namespace wptimize;
+
+class Wptimize_admin 
 {
     public function __construct() {
         add_action( 'admin_menu',  [$this, 'opbir_add_admin_menu'] );

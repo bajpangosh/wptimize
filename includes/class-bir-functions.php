@@ -1,9 +1,14 @@
 <?php
+// Prevent direct access
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 /**
  * Funzioni generiche usate nel plugin
  * 
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 class Bir_functions
 {
