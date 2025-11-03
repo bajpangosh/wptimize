@@ -2,7 +2,7 @@
 /**
  * Fa il resize delle immagini e le ottimizza
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 class Bir_optimize_functions extends Bir_extends_functions {
 

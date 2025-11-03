@@ -1,4 +1,4 @@
-<?php namespace bulk_image_resizer; ?>
+<?php namespace wptimize; ?>
 <h3>BULK</h3>
 <?php 
 $info = Bir_list_functions::status();
@@ -6,9 +6,9 @@ $info = Bir_list_functions::status();
 if ($info['status'] == 'RUNNING' && $info['action'] == 'resize') {
     ?>
     <div class="bir-config-warning" id="opConfigWarning" >
-    <?php _e('I found an unfinished bulk optimization, would you like to complete it?', 'bulk-image-resizer'); ?>
+    <?php _e('I found an unfinished bulk optimization, would you like to complete it?', 'wptimize'); ?>
         
-        <div  id="opRunBulk" class="button button-primary js-running-btn-disable" onClick="next_bulk()"><?php _e('Resume', 'bulk-image-resizer'); ?></div>
+        <div  id="opRunBulk" class="button button-primary js-running-btn-disable" onClick="next_bulk()"><?php _e('Resume', 'wptimize'); ?></div>
     </div>
     <?php
 }
@@ -18,16 +18,16 @@ if ($info['status'] == 'RUNNING' && $info['action'] != 'resize') {
 ?>
 
 <div class="bir-config-info">
-<?php _e('Perform image optimization. To change the settings click on the "configuration" tab.', 'bulk-image-resizer'); ?>
+<?php _e('Perform image optimization. To change the settings click on the "configuration" tab.', 'wptimize'); ?>
 </div>
 
 <div id="bulkSuccessAlert" class="bir-config-success" style="display:none">
-<span class="dashicons dashicons-yes-alt"></span> <span id="bulkSuccessAlertMsg"><?php _e('The optimization process is completed', 'bulk-image-resizer'); ?></span>
+<span class="dashicons dashicons-yes-alt"></span> <span id="bulkSuccessAlertMsg"><?php _e('The optimization process is completed', 'wptimize'); ?></span>
 </div>
 
     
 <div class="op-form-field">
-    <div  id="opRunBulk" class="button button-primary js-running-btn-disable" onClick="startBulk()"><?php _e('Process Images', 'bulk-image-resizer'); ?></div>
+    <div  id="opRunBulk" class="button button-primary js-running-btn-disable" onClick="startBulk()"><?php _e('Process Images', 'wptimize'); ?></div>
 </div>
 
 <div class="bir-progress-box">
@@ -40,9 +40,9 @@ if ($info['status'] == 'RUNNING' && $info['action'] != 'resize') {
 <div id="birBulkLog" class="bir-box-log"></div>
 <br>
 <div class="bir-config-info">
-<?php _e('By default the original image that was uploaded is retained. Clicking on the Restore button can then restore the original images and their names.  If you have space problems you can instead decide to remove the original images. This operation is irreversible! '); ?>
+<?php _e('By default the original image that was uploaded is retained. Clicking on the Restore button can then restore the original images and their names.  If you have space problems you can instead decide to remove the original images. This operation is irreversible! ', 'wptimize'); ?>
 </div>
 <div class="op-form-field">
-    <div  id="opRunBulk" class="button button-danger js-running-btn-disable" onClick="startRestore()"><?php _e('Restore', 'bulk-image-resizer'); ?></div>
-    <div  id="opRunBulk" class="button button-danger js-running-btn-disable" onClick="startRemoveOriginal()"><?php _e('Delete Original Images', 'bulk-image-resizer'); ?></div>
+    <div  id="opRunBulk" class="button button-danger js-running-btn-disable" onClick="startRestore()"><?php _e('Restore', 'wptimize'); ?></div>
+    <div  id="opRunBulk" class="button button-danger js-running-btn-disable" onClick="startRemoveOriginal()"><?php _e('Delete Original Images', 'wptimize'); ?></div>
 </div>

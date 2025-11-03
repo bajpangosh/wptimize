@@ -3,9 +3,9 @@
 * La gestione degli hook riguardanti la media library
 * @since      2.0.0
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
-if (!defined('WPINC')) die;
+if (!defined('ABSPATH')) { exit; }
 
 class Bir_loader_media_library extends Bir_loader {
 
@@ -51,9 +51,9 @@ class Bir_loader_media_library extends Bir_loader {
 		global $bir_options;
 		if ($bir_options == null) $bir_options = new Bir_options_var();
 		if ($bir_options->plugin_active()) {
-			$bulk_actions['op-resize-original-images'] = __('Optimize (From bulk images plugin)', 'bulk-image-resizer');
+			$bulk_actions['op-resize-original-images'] = __('Optimize (From WPtimize plugin)', 'wptimize');
 		}
-		$bulk_actions['op-revert-original-images'] = __('Restore (From bulk images plugin)', 'bulk-image-resizer');
+		$bulk_actions['op-revert-original-images'] = __('Restore (From WPtimize plugin)', 'wptimize');
 		return $bulk_actions;
 	}
 
@@ -66,11 +66,11 @@ class Bir_loader_media_library extends Bir_loader {
 		//var_dump ($bir_options);
 		echo '<div style="border: 1px solid #d3d3d3; background: #e5e5e5; padding: 1rem; margin: 1rem 0;">';
 		if ($bir_options->optimize_active == 1 || $bir_options->webp_active == 1) {
-			echo 'Images are optimized using the plugin <strong><a href="'.admin_url('admin.php?page=bulk-images').'" >Bulk Image Resizer</a></strong>';
+			echo 'Images are optimized using the plugin <strong><a href="'.admin_url('admin.php?page=wptimize').'" >WPtimize</a></strong>';
 		} else if ($bir_options->resize_active == 1) {
-			echo '<strong><a href="'.admin_url('admin.php?page=bulk-images').'" >Bulk Image Resizer plugin</a></strong>: Images larger than '.$bir_options->max_width.'X'.$bir_options->max_height.'px will be resized.';
+			echo '<strong><a href="'.admin_url('admin.php?page=wptimize').'" >WPtimize plugin</a></strong>: Images larger than '.$bir_options->max_width.'X'.$bir_options->max_height.'px will be resized.';
 		} else {
-			echo 'Activate the <strong><a href="'.admin_url('admin.php?page=bulk-images').'" >Bulk Image Resizer </a></strong> plugin to optimize images';
+			echo 'Activate the <strong><a href="'.admin_url('admin.php?page=wptimize').'" >WPtimize </a></strong> plugin to optimize images';
 		}
 		echo '</div>';
 	}

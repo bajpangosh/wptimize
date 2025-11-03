@@ -16,11 +16,11 @@
  * 
  * @since      2.0.0
  *
- * @package    bulk-image-resizer
- * @subpackage bulk-image-resizer/includes
+ * @package    wptimize
+ * @subpackage wptimize/includes
  */
 
- namespace bulk_image_resizer;
+ namespace wptimize;
 
 class Bir_rename_functions extends Bir_extends_functions {
 

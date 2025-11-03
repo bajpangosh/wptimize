@@ -2,7 +2,7 @@
 /**
  * Gestisco i dati salvati nelle opzioni in una classe
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 // definisco una costante BIR_QUALITY_HIGHT 
 if (!defined('BIR_QUALITY_HIGHT')) {
@@ -34,11 +34,11 @@ class Bir_options_var
 
     function save() {
         $json = json_encode($this->array());
-        update_option('bulk_image_resizer', $json, false);
+        update_option('wptimize', $json, false);
     }
 
     function load() {
-        $json = get_option('bulk_image_resizer', '[]');
+        $json = get_option('wptimize', '[]');
         $json  = json_decode($json, true);
         if((isset($json["version"]) && ($json["version"] == "1.2.0" || $json["version"] == "1.3.0")) || !isset($json["version"])) {
             $json['resize_active'] = 1;

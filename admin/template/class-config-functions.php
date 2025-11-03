@@ -2,7 +2,7 @@
 /**
  * Elementi grafici per il config
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 class Bir_config_fn {
     /**

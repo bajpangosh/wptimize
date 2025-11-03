@@ -84,7 +84,7 @@ add_filter( 'op_bir_resize_image_bulk', 'fn_bir_resize_image', 10, 2);
 
 Hooks: 
 op_bir_resize_image_bulk_suffix returns the suffix to be added to the image 
-bulk-image-resizer-after-setup-form adds html to the end of the setting form
+wptimize-after-setup-form adds html to the end of the setting form
 
 = What about WPtimize =
 When you upload an image to WordPress, thumbs are created for the template, but the uploaded image is saved and sometimes used.
@@ -164,7 +164,7 @@ They assume no responsibility for any malfunctions or loss of information result
 * Fixed:  Post upload resize doesn't work
 
 = 0.9.0 - 2021-05-20 =
-* Work version Bulk image resize 
+* Work version WPtimize 
 * Added: language Translate
 
 

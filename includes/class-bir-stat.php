@@ -5,9 +5,9 @@
  * 
  * @since      2.0.0
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
-if (!defined('WPINC')) die;
+if (!defined('ABSPATH')) { exit; }
 
 class Bir_statistic {
 	public function __construct() {

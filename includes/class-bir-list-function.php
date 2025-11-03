@@ -6,7 +6,7 @@
  * Se non c'è un processo di resize in bulk in corso, e faccio la richiesa di resize carica il primo gruppo
  * Ci deve essere una richiesta per definire se c'è un resize in corso, e una funzione per il riavvio
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
  class BIR_list_functions extends Bir_extends_functions {
 

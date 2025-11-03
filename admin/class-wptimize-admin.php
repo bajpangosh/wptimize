@@ -20,7 +20,7 @@ class Wptimize_admin
     function get_template() {
 		global $bir_options;
         wp_enqueue_style( 'bir-style' , plugin_dir_url( __FILE__ ) . 'css/bir.css');
- 	    wp_enqueue_script( 'bulk-image-resizer-chart', plugin_dir_url( __FILE__ ) . 'js/chart.js');
+ 	    wp_enqueue_script( 'wptimize-chart', plugin_dir_url( __FILE__ ) . 'js/chart.js');
  	    wp_enqueue_script( 'bir-js'   , plugin_dir_url( __FILE__ ) . 'js/bir.js');
 		$options = $bir_options;
 		$check_fn_editor = Bir_functions::check_image_editor();
@@ -32,10 +32,10 @@ class Wptimize_admin
 	 */
 	public function opbir_add_admin_menu() {
 		add_management_page(
-			__('Bulk image resizer', 'bulk-image-resizer'),
-			'Bulk images',
+			__('WPtimize', 'wptimize'),
+			'WPtimize',
 			'manage_options',
-			'bulk-images',
+			'wptimize',
 			[$this, 'get_template']
 		);
 	}

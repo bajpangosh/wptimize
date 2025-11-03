@@ -12,33 +12,33 @@ namespace wptimize;
 
 class Bir_functions
 {
-    static $global_bulk_image_resizer_check_editor = '';
+    static $global_wptimize_check_editor = '';
     static function check_image_editor() {
        
-        if (is_bool(self::$global_bulk_image_resizer_check_editor)) {
-            return self::$global_bulk_image_resizer_check_editor;
+        if (is_bool(self::$global_wptimize_check_editor)) {
+            return self::$global_wptimize_check_editor;
         }
-        $path_check_img_dir = BULK_IMAGE_RESIZER_DIR.'1px.jpg';
-        $path_check_img_url = plugins_url('bulk-image-resizer/1px.jpg' );
+        $path_check_img_dir = WPTIMIZE_DIR.'1px.jpg';
+        $path_check_img_url = plugins_url('wptimize/1px.jpg' );
         if (!file_exists($path_check_img_dir)) {
             if ( (! extension_loaded( 'gd' ) || ! function_exists( 'gd_info' )) && ( ! extension_loaded( 'imagick' ) || ! class_exists( 'Imagick', false ) || ! class_exists( 'ImagickPixel', false )) ) {
-                self::$global_bulk_image_resizer_check_editor =  __('There seems to be no php library for manipulating images.', 'bulk-image-resizer');
+                self::$global_wptimize_check_editor =  __('There seems to be no php library for manipulating images.', 'wptimize');
             } else {
-                self::$global_bulk_image_resizer_check_editor =  '';
+                self::$global_wptimize_check_editor =  '';
             }
-            return self::$global_bulk_image_resizer_check_editor;
+            return self::$global_wptimize_check_editor;
         }
         $img = wp_get_image_editor($path_check_img_url);
         if (is_wp_error($img)) {
-            self::$global_bulk_image_resizer_check_editor =  $img->get_error_message();
+            self::$global_wptimize_check_editor =  $img->get_error_message();
             if ($img->get_error_code() == 'image_no_editor') {
                 if ( (! extension_loaded( 'gd' ) || ! function_exists( 'gd_info' )) && ( ! extension_loaded( 'imagick' ) || ! class_exists( 'Imagick', false ) || ! class_exists( 'ImagickPixel', false )) ) {
-                    self::$global_bulk_image_resizer_check_editor =  __('There seems to be no php library for manipulating images.', 'bulk-image-resizer');
+                    self::$global_wptimize_check_editor =  __('There seems to be no php library for manipulating images.', 'wptimize');
                 } 
             }
-            return self::$global_bulk_image_resizer_check_editor;
+            return self::$global_wptimize_check_editor;
         } else {
-            self::$global_bulk_image_resizer_check_editor = '';
+            self::$global_wptimize_check_editor = '';
             return '';
         }
     }

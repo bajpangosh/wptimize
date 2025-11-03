@@ -3,7 +3,7 @@
  * Questa è la classe da estendere per le funzioni 
  * Gestisce gli errori e i debug
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 class Bir_extends_functions {
     

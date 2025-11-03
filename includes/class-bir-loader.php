@@ -4,16 +4,16 @@
  * 
  * @since      2.0.0
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
-if (!defined('WPINC')) die;
+if (!defined('ABSPATH')) { exit; }
 
 class Bir_loader {
 	/**
 	 * Inizializzo tutti i loader per gli ajax
 	 */
 	public function __construct() {
-		if ((isset($_REQUEST['page']) && $_REQUEST['page'] == 'bulk-images')) {
+		if ((isset($_REQUEST['page']) && $_REQUEST['page'] == 'wptimize')) {
 			add_action('admin_head', [$this, 'transalte_javascript']);
 		}
         //Salva i parametri di configurazione. Viene chiamata quando si clicca sul bottone salva configurazione
@@ -234,24 +234,24 @@ class Bir_loader {
 	public function transalte_javascript() {
 		?>
 			<script>
-				var t9n_pause = "<?php (_e("Updates are paused. Click on resume to continue.", "bulk-image-resizer")); ?>";
-				var t9n_confirm_1 = "<?php echo (__("Are you sure you want to resize images with a width less than 500px?", "bulk-image-resizer")); ?>";
-				var t9n_confirm_2 = "<?php echo (__("Are you sure you want to resize images with a height less than 500px?", "bulk-image-resizer")); ?>";
-				var t9n_confirm_3 = "<?php echo (__("Are you sure you want to leave the page?", "bulk-image-resizer")); ?>";
-				var t9n_wait_settings = "<?php echo (__("Wait for the end of saving the settings", "bulk-image-resizer")); ?>";
-				var t9n_analisys = "<?php echo (__("Analyzing the update in progress ...", "bulk-image-resizer")); ?>";
-				var t9n_start_resize = "<?php echo (__("I start resizing the images", "bulk-image-resizer")); ?>";
-				var t9n_warning_resize = "<?php echo (__("Do not leave the page while you are resizing your images", "bulk-image-resizer")); ?>";
-				var t9n_we_are_almost_there = "<?php echo (__("We are almost there", "bulk-image-resizer")); ?>";
-				var t9n_spared = "<?php echo (__("They were spared: <b> %s </b>.", "bulk-image-resizer")); ?>";
-				var t9n_end_1 = "<?php echo (__("The update has finished", "bulk-image-resizer")); ?>";
-				var t9n_end_2 = "<?php echo (__("Now the used space is: <b>%s</b>", "bulk-image-resizer")); ?>";
-				var t9n_end_3 = "<?php echo (__("The elapsed time is: %s", "bulk-image-resizer")); ?>";
-				var t9n_time_remaining = "<?php echo (__("Estimated time remaining: %s", "bulk-image-resizer")); ?>";
-				var t9n_time_analisys = "<?php echo (__("Estimated time analysis in progress.", "bulk-image-resizer")); ?>";
-				var t9n_img_left = "<?php echo (__("Still to be processed: %s", "bulk-image-resizer")); ?>";
-				var t9n_none = "<?php echo (__("No images found to update", "bulk-image-resizer")); ?>";
-				var t9n_ops = "<?php echo (__("I am having difficulty contacting the server.", "bulk-image-resizer")); ?>";
+				var t9n_pause = "<?php (_e("Updates are paused. Click on resume to continue.", "wptimize")); ?>";
+				var t9n_confirm_1 = "<?php echo (__("Are you sure you want to resize images with a width less than 500px?", "wptimize")); ?>";
+				var t9n_confirm_2 = "<?php echo (__("Are you sure you want to resize images with a height less than 500px?", "wptimize")); ?>";
+				var t9n_confirm_3 = "<?php echo (__("Are you sure you want to leave the page?", "wptimize")); ?>";
+				var t9n_wait_settings = "<?php echo (__("Wait for the end of saving the settings", "wptimize")); ?>";
+				var t9n_analisys = "<?php echo (__("Analyzing the update in progress ...", "wptimize")); ?>";
+				var t9n_start_resize = "<?php echo (__("I start resizing the images", "wptimize")); ?>";
+				var t9n_warning_resize = "<?php echo (__("Do not leave the page while you are resizing your images", "wptimize")); ?>";
+				var t9n_we_are_almost_there = "<?php echo (__("We are almost there", "wptimize")); ?>";
+				var t9n_spared = "<?php echo (__("They were spared: <b> %s </b>.", "wptimize")); ?>";
+				var t9n_end_1 = "<?php echo (__("The update has finished", "wptimize")); ?>";
+				var t9n_end_2 = "<?php echo (__("Now the used space is: <b>%s</b>", "wptimize")); ?>";
+				var t9n_end_3 = "<?php echo (__("The elapsed time is: %s", "wptimize")); ?>";
+				var t9n_time_remaining = "<?php echo (__("Estimated time remaining: %s", "wptimize")); ?>";
+				var t9n_time_analisys = "<?php echo (__("Estimated time analysis in progress.", "wptimize")); ?>";
+				var t9n_img_left = "<?php echo (__("Still to be processed: %s", "wptimize")); ?>";
+				var t9n_none = "<?php echo (__("No images found to update", "wptimize")); ?>";
+				var t9n_ops = "<?php echo (__("I am having difficulty contacting the server.", "wptimize")); ?>";
 				function t9n_sprintf(string) {
 					var args = Array.prototype.slice.call(arguments);
 					a = args.splice(0,1);
@@ -316,14 +316,14 @@ class Bir_loader {
 	 * Preparazione delle statistiche
 	 */
 	public function get_stat() {
-		require_once BULK_IMAGE_RESIZER_DIR.'includes/class-bir-stat.php';
+		require_once WPTIMIZE_DIR.'includes/class-bir-stat.php';
 		$data = [];
 		$count_data_filesize = Bir_statistic::count_data_filesize();
 		$file_size = $count_data_filesize['current'];
 		$msg = "";
 		
 		if ($file_size['total_files'] > $file_size['total_files_original']) {
-			$msg = sprintf(__("There are %s images that have been not optimized.", "bulk-image-resizer"), ($file_size['total_files'] - $file_size['total_files_original']));
+			$msg = sprintf(__("There are %s images that have been not optimized.", "wptimize"), ($file_size['total_files'] - $file_size['total_files_original']));
 		} 
 		
 		$data['file_size'] = ['total_file_size' => $file_size['total_file_size'], 'total_file_size_original' => $file_size['total_file_size_original'], 'msg'=>$msg];
@@ -353,14 +353,14 @@ class Bir_loader {
 	function welcome_message() {
 		if (is_admin()) {
 			$screen = get_current_screen();
-			$op_bulk_image_resizer = absint(get_option('bulk_image_resizer_welcome', 0));
-			if ($screen->id == 'plugins' && $op_bulk_image_resizer > 0) {
-				require(plugin_dir_path(plugin_dir_path( __FILE__ )) . 'admin/partials/bulk-image-resizer-popup-activation-plugin.php');
-				$op_bulk_image_resizer = $op_bulk_image_resizer -1;
-				if ($op_bulk_image_resizer > 0) {
-					update_option('bulk_image_resizer_welcome', $op_bulk_image_resizer, false);
+			$op_wptimize = absint(get_option('wptimize_welcome', 0));
+			if ($screen->id == 'plugins' && $op_wptimize > 0) {
+				require(plugin_dir_path(plugin_dir_path( __FILE__ )) . 'admin/partials/wptimize-popup-activation-plugin.php');
+				$op_wptimize = $op_wptimize -1;
+				if ($op_wptimize > 0) {
+					update_option('wptimize_welcome', $op_wptimize, false);
 				} else {
-					delete_option('bulk_image_resizer_welcome'); 
+					delete_option('wptimize_welcome'); 
 				}
 			}
 		}

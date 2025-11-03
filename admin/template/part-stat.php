@@ -1,6 +1,6 @@
 <?php
 // gestisco le statistiche
-namespace bulk_image_resizer;
+namespace wptimize;
 ?>
 <div class="stat-info-row-2-cols">
     <div class="stat-col">

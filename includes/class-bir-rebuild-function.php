@@ -3,7 +3,7 @@
  * Le funzioni sulle thumbnails
  * @since      2.0.0
  */
-namespace bulk_image_resizer;
+namespace wptimize;
 
 class Bir_rebuild_functions extends Bir_extends_functions {
     /**

@@ -355,11 +355,11 @@ function set_plugin_status(status) {
     if (status == 'bulk-running') {
         jQuery('#birInfo').html('Bulk running...');
         jQuery('#progress_bar').removeClass('bir-progress-disabled');
-        jQuery('#statusof_bulk_image_container').addClass('js-state-running-bulk');
+        jQuery('#statusof_wptimize_container').addClass('js-state-running-bulk');
         jQuery('#btnPause').css('display', 'inline-block');
         jQuery('#btnPause').removeClass('bir-progress-disabled');
     } else {
-        jQuery('#statusof_bulk_image_container').removeClass('js-state-running-bulk');
+        jQuery('#statusof_wptimize_container').removeClass('js-state-running-bulk');
         jQuery('#btnPause').css('display', 'none');
     }
     if (status == 'bulk-pause') {
@@ -379,22 +379,22 @@ function set_plugin_status(status) {
     if (status == 'bulk-restore') {
         jQuery('#progress_bar').removeClass('bir-progress-disabled');
         jQuery('#birInfo').html('images restore...');
-        jQuery('#statusof_bulk_image_container').addClass('js-state-restore-bulk');
+        jQuery('#statusof_wptimize_container').addClass('js-state-restore-bulk');
     } else {
-        jQuery('#statusof_bulk_image_container').removeClass('js-state-restore-bulk');
+        jQuery('#statusof_wptimize_container').removeClass('js-state-restore-bulk');
     }
     if (status == 'bulk-delete-original') {
         jQuery('#progress_bar').removeClass('bir-progress-disabled');
         jQuery('#birInfo').html('I am removing the original images...');
-        jQuery('#statusof_bulk_image_container').addClass('js-state-delete-original-bulk');
+        jQuery('#statusof_wptimize_container').addClass('js-state-delete-original-bulk');
     } else {
-        jQuery('#statusof_bulk_image_container').removeClass('js-state-delete-original-bulk');
+        jQuery('#statusof_wptimize_container').removeClass('js-state-delete-original-bulk');
     }
 
     if (status == 'setting-submit') {
-        jQuery('#statusof_bulk_image_container').addClass('js-state-submit');
+        jQuery('#statusof_wptimize_container').addClass('js-state-submit');
     } else {
-        jQuery('#statusof_bulk_image_container').removeClass('js-state-submit');
+        jQuery('#statusof_wptimize_container').removeClass('js-state-submit');
     }
 
     if (status != '') {
