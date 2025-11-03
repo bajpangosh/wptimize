@@ -2,8 +2,8 @@ name: WPtimize Plugin Release
 
 on:
   push:
-    tags:
-      - "v*" # Triggers only when you push a tag like v1.0.0
+    branches:
+      - main # Triggers on every push to main branch
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Set plugin name and version
         run: |
           echo "PLUGIN_SLUG=wptimize" >> $GITHUB_ENV
-          echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+          echo "VERSION=2.0.1" >> $GITHUB_ENV
 
       - name: Create plugin archive using git
         run: |
