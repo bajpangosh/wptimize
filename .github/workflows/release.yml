@@ -1,4 +1,4 @@
-name: Wptimize Plugin ZIP Release
+name: WPtimize Plugin Release
 
 on:
   push:
@@ -14,16 +14,40 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set plugin name
-        run: echo "PLUGIN_SLUG=wptimize" >> $GITHUB_ENV
+      - name: Set plugin name and version
+        run: |
+          echo "PLUGIN_SLUG=wptimize" >> $GITHUB_ENV
+          echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Create clean plugin directory
+        run: |
+          mkdir -p build/${{ env.PLUGIN_SLUG }}
+          rsync -av --exclude='.git' --exclude='.github' --exclude='build' --exclude='*.DS_Store' --exclude='.idea' --exclude='node_modules' --exclude='*.log' --exclude='gitpush.sh' . build/${{ env.PLUGIN_SLUG }}/
 
       - name: Create ZIP file
         run: |
-          zip -r "${{ env.PLUGIN_SLUG }}.zip" . -x "*.git*" "*.github*" "*.DS_Store*" "*.idea*" "*/node_modules/*"
+          cd build
+          zip -r "../${{ env.PLUGIN_SLUG }}-${{ env.VERSION }}.zip" ${{ env.PLUGIN_SLUG }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ env.PLUGIN_SLUG }}.zip
+          name: "WPtimize v${{ env.VERSION }}"
+          body: |
+            ## WPtimize v${{ env.VERSION }}
+            
+            WordPress image optimization plugin by KloudBoy.
+            
+            ### Installation
+            1. Download the `wptimize-${{ env.VERSION }}.zip` file
+            2. Upload to WordPress via Plugins > Add New > Upload Plugin
+            3. Activate the plugin
+            4. Go to Tools > WPtimize to configure
+            
+            ### Support
+            For support, contact: support@kloudboy.com
+          files: ${{ env.PLUGIN_SLUG }}-${{ env.VERSION }}.zip
+          draft: false
+          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
