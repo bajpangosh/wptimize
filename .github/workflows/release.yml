@@ -1,0 +1,29 @@
+name: Wptimize Plugin ZIP Release
+
+on:
+  push:
+    tags:
+      - "v*" # Triggers only when you push a tag like v1.0.0
+
+jobs:
+  build:
+    name: Build and Release ZIP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set plugin name
+        run: echo "PLUGIN_SLUG=wptimize" >> $GITHUB_ENV
+
+      - name: Create ZIP file
+        run: |
+          zip -r "${{ env.PLUGIN_SLUG }}.zip" . -x "*.git*" "*.github*" "*.DS_Store*" "*.idea*" "*/node_modules/*"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.PLUGIN_SLUG }}.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
