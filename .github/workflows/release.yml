@@ -19,15 +19,9 @@ jobs:
           echo "PLUGIN_SLUG=wptimize" >> $GITHUB_ENV
           echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
 
-      - name: Create clean plugin directory
+      - name: Create plugin archive using git
         run: |
-          mkdir -p build/${{ env.PLUGIN_SLUG }}
-          rsync -av --exclude='.git' --exclude='.github' --exclude='build' --exclude='*.DS_Store' --exclude='.idea' --exclude='node_modules' --exclude='*.log' --exclude='gitpush.sh' . build/${{ env.PLUGIN_SLUG }}/
-
-      - name: Create ZIP file
-        run: |
-          cd build
-          zip -r "../${{ env.PLUGIN_SLUG }}-${{ env.VERSION }}.zip" ${{ env.PLUGIN_SLUG }}
+          git archive --format=zip --prefix=${{ env.PLUGIN_SLUG }}/ HEAD -o ${{ env.PLUGIN_SLUG }}-${{ env.VERSION }}.zip
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
