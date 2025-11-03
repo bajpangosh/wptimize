@@ -23,9 +23,17 @@ jobs:
         run: |
           git archive --format=zip --prefix=${{ env.PLUGIN_SLUG }}/ HEAD -o ${{ env.PLUGIN_SLUG }}-${{ env.VERSION }}.zip
 
+      - name: Create or update tag
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -f v${{ env.VERSION }}
+          git push origin v${{ env.VERSION }} --force
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v${{ env.VERSION }}
           name: "WPtimize v${{ env.VERSION }}"
           body: |
             ## WPtimize v${{ env.VERSION }}
